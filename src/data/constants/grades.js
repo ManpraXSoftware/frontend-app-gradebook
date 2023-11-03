@@ -13,6 +13,9 @@ const Headings = StrictDict({
   email: 'Email',
   totalGrade: 'Total Grade (%)',
   username: 'Username',
+  enrollment_date: 'enrollment_date', 
+  passing_date: 'passing_date', 
+  certificate_assigned: 'certificate_assigned'
 });
 
 export {

@@ -31,6 +31,7 @@ export class GradebookTable extends React.Component {
   }
 
   mapHeaders(heading) {
+    
     let label;
     if (heading === Headings.totalGrade) {
       label = <LabelReplacements.TotalGradeLabelReplacement />;
@@ -38,6 +39,12 @@ export class GradebookTable extends React.Component {
       label = <LabelReplacements.UsernameLabelReplacement />;
     } else if (heading === Headings.email) {
       label = <FormattedMessage {...messages.emailHeading} />;
+    } else if (heading === Headings.enrollment_date) {
+      label = <FormattedMessage {...messages.enrollment_date} />;
+    } else if (heading === Headings.passing_date) {
+      label = <FormattedMessage {...messages.passing_date} />;
+    } else if (heading === Headings.certificate_assigned) {
+      label = <FormattedMessage {...messages.certificate_assigned} />;
     } else {
       label = heading;
     }
@@ -51,6 +58,10 @@ export class GradebookTable extends React.Component {
       ),
       [Headings.email]: (<Fields.Email email={entry.email} />),
       [Headings.totalGrade]: `${roundGrade(entry.percent * 100)}${isRtl(getLocale()) ? '\u200f' : ''}%`,
+      [Headings.enrollment_date]: (entry.enrollment_date), 
+      [Headings.passing_date]: (entry.passed_date),
+      [Headings.certificate_assigned]: (entry.certificate_assigned),
+
     };
     entry.section_breakdown.forEach(subsection => {
       dataRow[subsection.label] = (

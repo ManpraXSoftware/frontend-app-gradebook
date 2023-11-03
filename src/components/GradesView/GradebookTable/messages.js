@@ -36,6 +36,21 @@ const messages = defineMessages({
     defaultMessage: 'No results found',
     description: 'Gradebook table message when no learner results were found',
   },
+  enrollment_date: {
+    id: 'gradebook.GradesView.table.labels.enrollment_date',
+    defaultMessage: 'Enrollment Date',
+    description: 'Gradebook table username label',
+  },
+  passing_date: {
+    id: 'gradebook.GradesView.table.labels.passing_date',
+    defaultMessage: 'Passing Date',
+    description: 'Gradebook table username label',
+  },
+  certificate_assigned: {
+    id: 'gradebook.GradesView.table.labels.certificate_assigned',
+    defaultMessage: 'Certificate Assigned',
+    description: 'Gradebook table username label',
+  },
 });
 
 export default messages;

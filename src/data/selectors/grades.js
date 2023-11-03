@@ -105,12 +105,14 @@ export const headingMapper = (category, label = 'All') => {
   } else {
     filter = filters.byLabel;
   }
-  const { username, email, totalGrade } = Headings;
+  // const { username, email, totalGrade } = Headings;
+  const { username, email, totalGrade, enrollment_date, passing_date, certificate_assigned } = Headings;
   const filteredLabels = (entry) => entry.filter(filter).map(s => s.label);
 
   return (entry) => (
     entry
-      ? [username, email, ...filteredLabels(entry), totalGrade]
+      // ? [username, email, ...filteredLabels(entry), totalGrade]
+      ? [username, email, ...filteredLabels(entry), totalGrade, enrollment_date, passing_date, certificate_assigned ]
       : []
   );
 };
