@@ -5,10 +5,17 @@ import { filterQuery, stringifyUrl } from './utils';
 
 const courseId = window.location.pathname.split('/').filter(Boolean).pop() || '';
 
+export const lmsURL_91lms =  () => `${getConfig().LMS_BASE_URL}`;
 export const getUrlPrefix = () => `${getConfig().LMS_BASE_URL}/api/`;
 export const getBulkGradesUrl = () => `${getUrlPrefix()}bulk_grades/course/${courseId}/`;
 export const getEnrollmentUrl = () => `${getUrlPrefix()}enrollment/v1/`;
-export const getGradesUrl = () => `${getUrlPrefix()}grades/v1/`;
+/**
+ need to change the getGradesUrl here to get the data 
+ from 91lms API's instead the one from edx-platform (api/v1/grades/)
+ */
+
+
+export const getGradesUrl = () => `${lmsURL_91lms()}/mxadmin/`;
 export const getGradebookUrl = () => `${getGradesUrl()}gradebook/${courseId}/`;
 export const getBulkUpdateUrl = () => `${getGradebookUrl()}bulk-update`;
 export const getInterventionUrl = () => `${getBulkGradesUrl()}intervention/`;
@@ -23,6 +30,7 @@ export const getRolesUrl = () => stringifyUrl(`${getEnrollmentUrl()}roles/`, { c
  * @param {string} rowId - row/error identifier
  * @return {string} - bulk grades fetch url
  */
+
 export const bulkGradesUrlByRow = (rowId) => stringifyUrl(getBulkGradesUrl(), { error_id: rowId });
 
 export const gradeCsvUrl = (options = {}) => stringifyUrl(getBulkGradesUrl(), filterQuery(options));
@@ -38,6 +46,7 @@ export const sectionOverrideHistoryUrl = (subsectionId, userId) => stringifyUrl(
 
 export default StrictDict({
   getUrlPrefix,
+  lmsURL_91lms,
   getBulkGradesUrl,
   getEnrollmentUrl,
   getGradesUrl,
